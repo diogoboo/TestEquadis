@@ -1,0 +1,12 @@
+<div class="movie-search-container">
+    <h2>Search for Movies</h2>
+    <form (submit)="searchMovies()">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        placeholder="Enter movie title"
+      />
+      <button type="submit">Search</button>
+    </form>
+  </div>
+      
