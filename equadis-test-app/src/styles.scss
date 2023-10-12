@@ -1,1 +1,113 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'primeflex/primeflex.css';
+
+:root {
+  --font-family: 'Arial, sans-serif';
+  --surface-ground: #f0f0f0;
+  --text-color: #333;
+  --surface-card: #fff;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: var(--font-family);
+  font-weight: normal;
+  background: var(--surface-ground);
+  color: var(--text-color);
+  padding: 1rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.navbar {
+  font-family: var(--font-family);
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  line-height: 20px;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar a.router-link-active {
+  font-weight: bold;
+}
+
+.navbar a:first-child {
+  margin-left: 20px; 
+}
+
+.navbar ul {
+  margin-left: 10px; 
+}
+
+.card {
+  background: var(--surface-card);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.movie-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.movie-info {
+  margin-right: 20px;
+}
+
+.movie-poster {
+  width: auto;
+  max-height: 750px;
+}
+
+.movie-poster-search {
+  width: auto;
+  max-height: 200px;
+}
+
+.movie-description {
+  flex: 1;
+  text-align: left;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+p {
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  margin: 5px 0;
+}
+

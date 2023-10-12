@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { SESSION_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,17 @@ export class MovieService {
   private baseUrl = 'https://api.themoviedb.org/3';
   private imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              @Inject(SESSION_STORAGE) private storage: StorageService
+        ) {}
 
   searchMovies(query: string): Observable<any> {
+    const cachedData = this.storage.get(`search-${query}`);
+
+    if (cachedData) {
+      return of(cachedData);
+    }
+
     const url = `${this.baseUrl}/search/movie`;
     const params = new HttpParams()
       .set('query', query)
@@ -28,7 +37,10 @@ export class MovieService {
     });
 
     return this.http.get(url, { headers, params }).pipe(
-      map((response: any) => response),
+            map((response: any) => {
+        this.storage.set(`search-${query}`, response);
+        return response;
+      }),
       catchError(this.handleError)
     );
   }

@@ -1,12 +1,11 @@
-<div class="movie-search-container">
-    <h2>Search for Movies</h2>
+<div class="container">
+  <div class="card flex justify-content-center">
     <form (submit)="searchMovies()">
-      <input
-        type="text"
-        [(ngModel)]="searchQuery"
-        placeholder="Enter movie title"
-      />
+      <input type="text" name="movieTitle" pInputText [(ngModel)]="searchQuery" placeholder="Enter movie title" />
       <button type="submit">Search</button>
     </form>
   </div>
-      
+  <div class="card flex justify-content-center">
+    <app-movie-list [movies]="movies"></app-movie-list>
+  </div>
+</div>
