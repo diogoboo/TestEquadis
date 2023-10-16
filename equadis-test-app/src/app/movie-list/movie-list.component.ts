@@ -13,11 +13,11 @@ export class MovieListComponent implements OnInit {
   constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    // Get the search query from the route parameters
+    
     this.route.queryParams.subscribe(params => {
       const searchQuery = params['query'];
       if (searchQuery) {
-        // Call the movie service to fetch search results
+        
         this.movieService.searchMovies(searchQuery).subscribe((data: any) => {
           this.movies = data.results;
         });

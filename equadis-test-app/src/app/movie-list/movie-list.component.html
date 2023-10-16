@@ -1,12 +1,17 @@
-<div class="movie-list-container">
-  <ul *ngIf="!movies || movies.length === 0">
+<div class="movie-grid">
+  <ng-container *ngIf="!movies || movies.length === 0; else movieList">
     <li>No movies were found.</li>
-  </ul>
-  <ul>
-    <li *ngFor="let movie of movies">
-        <img [src]="getImageUrl(movie.poster_path)" alt="{{ movie.title }}" />
-        <h3>{{ movie.title }}</h3>
-    <button (click)="navigateToMovieDetails(movie.id)">View Details</button>
-    </li>
-  </ul>
+  </ng-container>
+  <ng-template #movieList>
+    <div class="movie-card-container">
+      <div *ngFor="let movie of movies" class="movie-card">
+        <p-card [header]="movie.title">
+          <div class="card-content">
+            <img [src]="getImageUrl(movie.poster_path)" alt="{{ movie.title }}" class="movie-poster-search" />
+            <button pButton label="View Details" (click)="navigateToMovieDetails(movie.id)" class="p-button-raised p-button-info"></button>
+          </div>
+        </p-card>
+      </div>
+    </div>
+  </ng-template>
 </div>

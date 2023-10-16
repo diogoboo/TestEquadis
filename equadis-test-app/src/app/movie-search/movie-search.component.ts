@@ -14,7 +14,7 @@ export class MovieSearchComponent {
 
   searchMovies() {
     if (this.searchQuery.trim() === '') {
-      // Handle empty search query
+      
       this.movies = [];
       return;
     }
